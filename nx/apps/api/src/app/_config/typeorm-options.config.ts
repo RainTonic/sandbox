@@ -5,11 +5,10 @@ export async function typeormOptionsModuleFactory(configService: ConfigService):
   return {
     type: 'postgres',
     synchronize: configService.get<'true' | 'false'>('ORM_SYNCHRONIZE') === 'true',
-    host: configService.get<string>('DATABASE_HOST', 'localhost'),
-    database: configService.get<string>('DATABASE_SCHEMA'),
-    port: configService.get<number>('DATABASE_PORT', 5432),
-    password: configService.get<string>('DATABASE_PASSWORD'),
-    username: configService.get<string>('DATABASE_USERNAME'),
+    host: 'postgres',
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB,
     autoLoadEntities: true,
   };
 }
