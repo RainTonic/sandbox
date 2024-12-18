@@ -1,0 +1,16 @@
+services:
+  nx-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nx-monorepo
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "${ANGULAR_PORT:-4200}:4200"  # Format is "HOST_PORT:CONTAINER_PORT"
+      - "${NESTJS_PORT:-3333}:3000"   # Format is "HOST_PORT:CONTAINER_PORT"
+      - "9229:9229"  # for Node.js debugging
+    command: nx run-many --target=serve --projects=sandbox,api --parallel
+    env_file:
+      - .env
