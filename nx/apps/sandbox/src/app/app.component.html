@@ -1,6 +1,27 @@
-
 <div class="p-5">
-  <button type="button" (click)="tryAPI()" class="mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Scarica dati</button>
+  <button
+    type="button"
+    (click)="fetchTodos()"
+    class="mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+    Scarica dati
+  </button>
+
+  <!-- Add form control for new todo -->
+  <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="mb-5">
+    <input
+      formControlName="description"
+      placeholder="Enter description"
+      class="border rounded py-2 px-4 mb-2 w-full"
+    />
+    <button
+      type="submit"
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+    >
+      Add Todo
+    </button>
+  </form>
+
   <div class="overflow-x-auto max-w-96">
     <table
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -15,23 +36,19 @@
       </thead>
       <tbody>
         <!-- Add loading state -->
-        @if (todos$ | async; as todos) {
-          @if (!todos?.length) {
-            <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-              <td colspan="2">No data</td>
-            </tr>
-          } @else {
-            @for (item of todos; track item.id) {
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td>{{ item._id }}</td>
-                <td>{{ item.description }}</td>
-              </tr>
-            }
-          }
-        } @else {
-          <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-            <td colspan="2">No data</td>
-          </tr>
+        @if (todos$ | async; as todos) { @if (!todos?.length) {
+        <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+          <td colspan="2">No data</td>
+        </tr>
+        } @else { @for (item of todos; track item.id) {
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td>{{ item._id }}</td>
+          <td>{{ item.description }}</td>
+        </tr>
+        } } } @else {
+        <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+          <td colspan="2">No data</td>
+        </tr>
         }
       </tbody>
     </table>

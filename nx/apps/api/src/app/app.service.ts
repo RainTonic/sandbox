@@ -9,4 +9,11 @@ export class AppService {
   getData(): any {
     return this.connection.query('SELECT * FROM todo;');
   }
+
+  createData(data: { description: string }): any {
+    return this.connection.query(
+      'INSERT INTO todo (description) VALUES ($1);',
+      [data.description]
+    );
+  }
 }
