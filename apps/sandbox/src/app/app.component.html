@@ -40,7 +40,7 @@
         <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
           <td colspan="2">No data</td>
         </tr>
-        } @else { @for (item of todos; track item.id) {
+        } @else { @for (item of todos; track item._id) {
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
           <td>{{ item._id }}</td>
           <td>{{ item.description }}</td>

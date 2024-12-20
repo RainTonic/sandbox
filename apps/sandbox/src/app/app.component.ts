@@ -19,7 +19,7 @@ import { Observable } from "rxjs";
 export class AppComponent {
   title = "sandbox";
 
-  todos$?: Observable<unknown>;
+  todos$?: Observable<{ description: string; _id: string }[]>;
   todoForm: FormGroup = new FormGroup({
     description: new FormControl("", Validators.required),
   });
@@ -44,6 +44,8 @@ export class AppComponent {
   }
 
   fetchTodos(): void {
-    this.todos$ = this._httpSvc.get("http://localhost:3000/api");
+    this.todos$ = this._httpSvc.get<{ description: string; _id: string }[]>(
+      "http://localhost:3000/api"
+    );
   }
 }
