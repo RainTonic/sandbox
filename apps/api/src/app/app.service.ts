@@ -7,6 +7,7 @@ export class AppService {
   constructor(@InjectConnection() private readonly connection: Connection) {}
 
   getData(): any {
+    console.log('c');
     return this.connection.query('SELECT * FROM todo;');
   }
 
