@@ -10,10 +10,14 @@
     "start:be": "nx serve api",
     "build": "nx run-many --parallel --target=build --projects=sandbox,api",
     "lint": "nx run-many --all --target=lint",
+    "lint:fix": "nx run-many --all --target=lint --fix",
     "test": "nx test",
     "prepare": "husky"
   },
   "private": true,
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  },
   "dependencies": {
     "@angular/animations": "~19.0.0",
     "@angular/common": "~19.0.0",
@@ -70,6 +74,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "jest-preset-angular": "~14.4.0",
+    "lint-staged": "^15.2.11",
     "nx": "20.2.2",
     "postcss": "^8.4.49",
     "prettier": "^2.8.8",
