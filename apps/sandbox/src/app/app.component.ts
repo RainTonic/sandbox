@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import {
   FormControl,
   FormGroup,
@@ -16,17 +16,15 @@ import { Observable } from "rxjs";
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = "sandbox";
 
-  todos$?: Observable<any>;
+  todos$?: Observable<unknown>;
   todoForm: FormGroup = new FormGroup({
     description: new FormControl("", Validators.required),
   });
 
   constructor(private _httpSvc: HttpClient) {}
-
-  ngOnInit() {}
 
   addTodo() {
     if (this.todoForm.valid) {
