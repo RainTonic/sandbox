@@ -38,6 +38,7 @@
     "@nestjs/platform-express": "^10.0.2",
     "@nestjs/serve-static": "^4.0.2",
     "@nestjs/typeorm": "^10.0.2",
+    "@ngx-env/builder": "^19.0.4",
     "axios": "^1.6.0",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.1.13",

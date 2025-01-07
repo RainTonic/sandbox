@@ -18,7 +18,7 @@ import { AppService } from './app.service';
       useFactory: typeormOptionsModuleFactory,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'sandbox'),
+      rootPath: join(__dirname, '..', 'sandbox', 'browser'),
       exclude: ['/api*'],
     }),
   ],

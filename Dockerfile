@@ -13,5 +13,9 @@ RUN npm install
 COPY . .
 
 # Expose ports for both Angular and NestJS
-EXPOSE 4200
-EXPOSE 3000
+# EXPOSE 4200
+
+RUN npm run build
+
+# Start the application
+CMD ["npm", "start"]
