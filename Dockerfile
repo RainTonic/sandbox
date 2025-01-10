@@ -10,12 +10,13 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 # Copy the rest of the application
-COPY . .
+COPY . /app
 
 # Expose ports for both Angular and NestJS
-# EXPOSE 4200
+EXPOSE 3000
 
 RUN npm run build
 
 # Start the application
 CMD ["npm", "start"]
+
