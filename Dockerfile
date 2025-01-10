@@ -16,10 +16,5 @@ COPY . /app
 # Expose is NOT supported by heroku but can be used locally
 EXPOSE 3000
 
-RUN npm run build
-RUN adduser -D nodeuser
-USER nodeuser
-
 # Start the application; $PORT is set by heroku
 CMD ["npm", "start"]
-
