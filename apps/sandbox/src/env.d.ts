@@ -8,4 +8,9 @@ interface ImportMeta {
   NG_APP_API: string;
   // readonly NG_APP_API_URL: string;
   [key: string]: unknown;
+  env: {
+    NG_APP_API_URL: string;
+    NG_APP_API_URL: string;
+    [key: string]: unknown;
+  };
 }

@@ -33,7 +33,7 @@ export class AppComponent {
       console.log("New Todo:", newTodo);
 
       this._httpSvc
-        .post(import.meta["env"].NG_APP_API_URL, {
+        .post(import.meta.env.NG_APP_API_URL, {
           description: newTodo.description,
         })
         .subscribe(() => {
@@ -47,7 +47,7 @@ export class AppComponent {
 
   fetchTodos(): void {
     this.todos$ = this._httpSvc.get<{ description: string; _id: string }[]>(
-      import.meta["env"].NG_APP_API_URL
+      import.meta.env.NG_APP_API_URL
     );
   }
 }
