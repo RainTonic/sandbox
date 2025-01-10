@@ -13,10 +13,13 @@ RUN npm install
 COPY . /app
 
 # Expose ports for both Angular and NestJS
-EXPOSE 3000
+# Expose is NOT supported by heroku
+# EXPOSE 3000
 
 RUN npm run build
+RUN adduser -D nodeuser
+USER nodeuser
 
-# Start the application
-CMD ["npm", "start"]
+# Start the application; $PORT is set by heroku
+CMD ["npm", "start"] --bind 0.0.0.0:$PORT
 
