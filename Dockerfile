@@ -16,5 +16,7 @@ COPY . /app
 # Expose is NOT supported by heroku but can be used locally
 EXPOSE 3000
 
-# Start the application; $PORT is set by heroku
+RUN npm run build
+
+# Start the application
 CMD ["npm", "start"]
